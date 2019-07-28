@@ -235,21 +235,32 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\AdminApp\.gitignore" />
-    <Content Include="Areas\Admin\AdminApp\e2e\protractor.conf.js" />
+    <Content Include="Areas\Admin\AdminApp\angular.json" />
+    <Content Include="Areas\Admin\AdminApp\browserslist" />
     <Content Include="Areas\Admin\AdminApp\karma.conf.js" />
-    <Content Include="Areas\Admin\AdminApp\src\app\app.component.css" />
+    <Content Include="Areas\Admin\AdminApp\package-lock.json" />
+    <Content Include="Areas\Admin\AdminApp\package.json" />
+    <Content Include="Areas\Admin\AdminApp\README.md" />
     <Content Include="Areas\Admin\AdminApp\src\app\app.component.html" />
     <Content Include="Areas\Admin\AdminApp\src\app\ui\destinations\destinations.component.html" />
+    <Content Include="Areas\Admin\AdminApp\src\app\ui\trips\destinations\destinations.component.html" />
+    <Content Include="Areas\Admin\AdminApp\src\app\ui\trips\trip-edit\trip-edit.component.html" />
+    <Content Include="Areas\Admin\AdminApp\src\app\ui\trips\trips-list\trips-list.component.html" />
+    <Content Include="Areas\Admin\AdminApp\src\assets\.gitkeep" />
     <Content Include="Areas\Admin\AdminApp\src\favicon.ico" />
     <Content Include="Areas\Admin\AdminApp\src\index.html" />
     <Content Include="Areas\Admin\AdminApp\src\styles.css" />
+    <Content Include="Areas\Admin\AdminApp\tsconfig.app.json" />
+    <Content Include="Areas\Admin\AdminApp\tsconfig.json" />
+    <Content Include="Areas\Admin\AdminApp\tsconfig.spec.json" />
+    <Content Include="Areas\Admin\AdminApp\tslint.json" />
     <Content Include="Areas\Admin\dist\favicon.ico" />
     <Content Include="Areas\Admin\dist\index.html" />
     <Content Include="Areas\Admin\dist\main.js" />
     <Content Include="Areas\Admin\dist\polyfills.js" />
     <Content Include="Areas\Admin\dist\runtime.js" />
     <Content Include="Areas\Admin\dist\styles.js" />
+    <Content Include="Areas\Admin\dist\ui-trips-trips-module.js" />
     <Content Include="Areas\Admin\dist\vendor.js" />
     <Content Include="Areas\Admin\Static\css\sb-admin.css" />
     <Content Include="Areas\Admin\Static\css\sb-admin.min.css" />
@@ -1895,18 +1906,6 @@
     <Content Include="Areas\Admin\Static\fonts\Pe-icon-7-stroke.eot" />
     <Content Include="Areas\Admin\Static\fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="Areas\Admin\Static\fonts\Pe-icon-7-stroke.woff" />
-    <Content Include="Areas\Admin\AdminApp\.editorconfig" />
-    <Content Include="Areas\Admin\AdminApp\angular.json" />
-    <Content Include="Areas\Admin\AdminApp\browserslist" />
-    <Content Include="Areas\Admin\AdminApp\e2e\tsconfig.json" />
-    <Content Include="Areas\Admin\AdminApp\package-lock.json" />
-    <Content Include="Areas\Admin\AdminApp\package.json" />
-    <Content Include="Areas\Admin\AdminApp\README.md" />
-    <Content Include="Areas\Admin\AdminApp\src\assets\.gitkeep" />
-    <Content Include="Areas\Admin\AdminApp\tsconfig.app.json" />
-    <Content Include="Areas\Admin\AdminApp\tsconfig.json" />
-    <Content Include="Areas\Admin\AdminApp\tsconfig.spec.json" />
-    <Content Include="Areas\Admin\AdminApp\tslint.json" />
     <Content Include="Areas\Admin\Static\scss\sb-admin.scss" />
     <Content Include="Areas\Admin\Static\scss\_cards.scss" />
     <Content Include="Areas\Admin\Static\scss\_footer.scss" />
@@ -2060,6 +2059,8 @@
     <Content Include="Areas\Admin\Static\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Static\vendor\jquery\jquery.min.map" />
     <Content Include="Areas\Admin\Static\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Areas\Admin\AdminApp\AdminApp.rar" />
+    <Content Include="Areas\Admin\dist\ui-trips-trips-module.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2118,21 +2119,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\e2e\src\app.e2e-spec.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\e2e\src\app.po.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app.component.spec.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app.component.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app.module.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\core\services\main.service.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\destinations\destinations.component.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\environments\environment.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\main.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\polyfills.ts" />
-    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\test.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
@@ -2140,6 +2126,24 @@
       <Project>{52b1fa67-b8b3-496d-a19c-70ed24168757}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app.component.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\core\models\trip.model.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\core\services\main.service.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\core\services\trips.service.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\destinations\destinations.component.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\trips\destinations\destinations.component.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\trips\trip-edit\trip-edit.component.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\trips\trips-list\trips-list.component.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\app\ui\trips\trips.module.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\environments\environment.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\main.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\polyfills.ts" />
+    <TypeScriptCompile Include="Areas\Admin\AdminApp\src\test.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

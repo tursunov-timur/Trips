@@ -6,76 +6,88 @@ using System.Net.Http;
 using System.Web.Http;
 using DAL;
 using DAL.Models;
+using DAL.Services;
 
 namespace WebApplication5.ApiControllers
 {
     [RoutePrefix("api/Trips")]
     public class TripsController : ApiController
     {
-        public TripsDbContext db = new TripsDbContext();
+        TripService TripService = new TripService();
 
         [Route("getTripsList")]
         [HttpGet]        
-        public IHttpActionResult GetTripsList()
+        public IEnumerable<Trip> GetTripsList()
         {
-            return Json(db.Trips.Select(t => t).OrderByDescending(t => t.StartDate));
+            return TripService.GetAllTrips();
         }
 
         [HttpGet]
         [Route("getTripById/{id}")]
-        public IHttpActionResult GetTripById(string id)
+        public Trip GetTripById(string id)
         {
             Guid guid = new Guid();
             Guid.TryParse(id, out guid);
-            return Json(db.Trips.Where(t => t.Id == guid));
+            return TripService.GetTripById(guid);
         }
 
         [HttpPost]
         [Route("createTrip")]
-        public IHttpActionResult CreateTrip([FromBody]Trip newTrip)
+        public Trip CreateTrip([FromBody]Trip trip)
         {
-            db.Trips.Add(newTrip);
-            db.SaveChanges();
-            return Json(db.Trips.Select(t => t).OrderByDescending(t => t.StartDate));
+            return TripService.CreateTrip(trip);
         }
 
         [HttpPost]
         [Route("updateTrip")]
-        public IHttpActionResult UpdateTrip([FromBody]Trip newTrip)
+        public Trip UpdateTrip([FromBody]Trip trip)
         { 
-            var currentTrip = db.Trips.FirstOrDefault(t => t.Id == newTrip.Id);
-            currentTrip.Days         = currentTrip.Days;
-            currentTrip.Destination  = currentTrip.Destination;
-            currentTrip.EndDate      = currentTrip.EndDate;
-            currentTrip.GroupSize    = currentTrip.GroupSize;
-            currentTrip.HasSale      = currentTrip.HasSale;
-            currentTrip.ImagePath    = currentTrip.ImagePath;
-            currentTrip.Map          = currentTrip.Map;
-            currentTrip.Name         = currentTrip.Name;
-            currentTrip.Nights       = currentTrip.Nights;
-            currentTrip.Price        = currentTrip.Price;
-            currentTrip.PriceText    = currentTrip.PriceText;
-            currentTrip.Sale         = currentTrip.Sale;
-            currentTrip.StartDate    = currentTrip.StartDate;
-            currentTrip.Text         = currentTrip.Text;
-            currentTrip.TourDates    = currentTrip.TourDates;
-            currentTrip.Url          = currentTrip.Url;
-            db.SaveChanges();
-
-            return Json(db.Trips.Select(t => t).OrderByDescending(t => t.StartDate));
+            return TripService.UpdateTrip(trip);
         }
 
         [HttpGet]
         [Route("deleteTrip/{id}")]
-        public IHttpActionResult DeleteTrip(string id)
+        public Trip DeleteTrip(string id)
+        {
+            Guid guid = new Guid();
+            Guid.TryParse(id, out guid);          
+
+            return TripService.DeleteTrip(guid);
+        }
+
+        //Program Day
+        [Route("GetProgramDaysByTripId/{id}")]
+        [HttpGet]
+        public IEnumerable<TripProgram> GetProgramDaysByTripId(string id)
         {
             Guid guid = new Guid();
             Guid.TryParse(id, out guid);
-            var currentTrip = db.Trips.FirstOrDefault(t => t.Id == guid);
-            db.Trips.Remove(currentTrip);
-            db.SaveChanges();
 
-            return Json(db.Trips.Select(t => t).OrderByDescending(t => t.StartDate));
+            return TripService.GetProgramDaysByTripId(guid);
+        }
+
+        [HttpPost]
+        [Route("createProgramDay")]
+        public TripProgram CreateProgramDay([FromBody]TripProgram programDay)
+        {
+            return TripService.CreateProgramDay(programDay);
+        }
+
+        [HttpPost]
+        [Route("updateProgramDay")]
+        public TripProgram UpdateProgramDay([FromBody]TripProgram programDay)
+        {
+            return TripService.UpdateProgramDay(programDay);
+        }
+
+        [HttpGet]
+        [Route("deleteProgramDay/{id}")]
+        public TripProgram DeleteProgramDay(string id)
+        {
+            Guid guid = new Guid();
+            Guid.TryParse(id, out guid);
+
+            return TripService.DeleteProgramDay(guid);
         }
     }
 }

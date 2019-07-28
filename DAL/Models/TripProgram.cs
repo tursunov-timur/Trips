@@ -13,7 +13,9 @@ namespace DAL.Models
 
         public int DayNumber { get; set; }
 
-        public string DayDescription { get; set; }
+        public string Title { get; set; }
+
+        public string Description { get; set; }
 
         public Guid TripId { get; set; }
 
