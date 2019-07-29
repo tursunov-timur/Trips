@@ -15,6 +15,8 @@ namespace DAL.Models
 
         public string Description { get; set; }
 
+        public int Sort { get; set; }
+
         public Guid TripId { get; set; }
 
         [ForeignKey("TripId")]
