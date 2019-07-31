@@ -210,8 +210,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ActivitiesController.cs" />
     <Compile Include="ApiControllers\DestinationsController.cs" />
     <Compile Include="ApiControllers\TripsController.cs" />
+    <Compile Include="ApiControllers\TypesOfTripController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

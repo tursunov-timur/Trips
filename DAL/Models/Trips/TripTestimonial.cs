@@ -7,19 +7,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
-    public class TripProgram
+    public class TripTestimonial
     {
         public Guid Id { get; set; }
 
-        public int DayNumber { get; set; }
-
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Author { get; set; }
+
+        public string Text { get; set; }
 
         public Guid TripId { get; set; }
 
         [ForeignKey("TripId")]
         public Trip Trip { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

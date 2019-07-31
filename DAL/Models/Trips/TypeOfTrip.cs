@@ -19,11 +19,12 @@ namespace DAL.Models
 
         public string ImagePath { get; set; }
 
-        public Guid ParentId { get; set; }
+        public Guid? ParentId { get; set; }
 
-        public Guid SEOId { get; set; }
+        public string SeoDescription { get; set; }
 
-        [ForeignKey("SEOId")]
-        public SEO SEO { get; set; }
+        public string SeoKeywords { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

@@ -39,10 +39,14 @@ namespace DAL.Models
 
         public string TourDates { get; set; }
 
-        public string Map { get; set; }     
-        
-        public virtual SEO SEO { get; set; }       
-        
+        public string Map { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string SeoDescription { get; set; }
+
+        public string SeoKeywords { get; set; }
+
         public virtual Destination Destination { get; set; }
              
         public virtual Activity Activity { get; set; }

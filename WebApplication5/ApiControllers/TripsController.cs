@@ -47,7 +47,7 @@ namespace WebApplication5.ApiControllers
 
         [HttpGet]
         [Route("deleteTrip/{id}")]
-        public Trip DeleteTrip(string id)
+        public IEnumerable<Trip> DeleteTrip(string id)
         {
             Guid guid = new Guid();
             Guid.TryParse(id, out guid);          
@@ -162,6 +162,7 @@ namespace WebApplication5.ApiControllers
             return TripService.DeleteTripFAQ(guid);
         }
 
+      
 
         // Trip Photos
         [Route("getTripFotosByTripId/{id}")]
@@ -178,7 +179,7 @@ namespace WebApplication5.ApiControllers
         [Route("createTripFoto")]
         public TripFoto CreateTripFoto([FromBody]TripFoto tripFoto)
         {
-            return TripService.UpdateTripFoto(tripFoto);
+            return TripService.CreateTripFoto(tripFoto);
         }
 
         [HttpPost]

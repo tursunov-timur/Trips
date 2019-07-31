@@ -4,40 +4,54 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DAL.Models;
+using DAL.Services;
 
 namespace WebApplication5.ApiControllers
 {
+    [RoutePrefix("api/Destinations")]
     public class DestinationsController : ApiController
     {
-        // GET: api/Destinations
-        public IEnumerable<string> Get()
+        DesctinationsService DesctinationsService = new DesctinationsService();
+
+        [HttpGet]
+        [Route("getDestinationsList")]
+        public IEnumerable<Destination> GetDestinationsList()
         {
-            return new string[] { "value1", "value2" };
+            return DesctinationsService.GetDestinationsList();
         }
 
-        // GET: api/Destinations/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("getDestinationById/{id}")]
+        public Destination GetDestinationById(string id)
         {
-            return "value";
+            Guid guid = new Guid();
+            Guid.TryParse(id, out guid);
+            return DesctinationsService.GetDestinationById(guid);
         }
 
-        // POST: api/Destinations
-        public void Post([FromBody]string value)
-        {
-        }
-
-        [Route("UpdateDestination")]
         [HttpPost]
-        // PUT: api/Destinations/5
-        public void UpdateDestination(int id, [FromBody]string value)
+        [Route("createDestination")]
+        public Destination CreateDestination([FromBody]Destination trip)
         {
+            return DesctinationsService.CreateDestination(trip);
         }
 
-        [Route("DeleteDestination")]
         [HttpPost]
-        // DELETE: api/Destinations/5
-        public void DeleteDestination(int id)
+        [Route("updateDestination")]
+        public Destination UpdateDestination([FromBody]Destination trip)
         {
+            return DesctinationsService.UpdateDestination(trip);
+        }
+
+        [HttpGet]
+        [Route("deleteDestination/{id}")]
+        public Destination DeleteDestination(string id)
+        {
+            Guid guid = new Guid();
+            Guid.TryParse(id, out guid);
+
+            return DesctinationsService.DeleteDestination(guid);
         }
     }
 }
