@@ -19,7 +19,8 @@ namespace WebApplication5.ApiControllers
         [Route("getActivitiesList")]
         public IEnumerable<Activity> GetActivitiesList()
         {
-            return ActivitiesService.GetActivitiesList();
+            var res =  ActivitiesService.GetActivitiesList();
+            return res;
         }
         
         [HttpGet]
@@ -57,7 +58,7 @@ namespace WebApplication5.ApiControllers
 
         [HttpGet]
         [Route("getKeyValueActivityList")]
-        public Dictionary<Guid, string> GetKeyValueActivityList()
+        public IEnumerable<Dictionary<Guid, string>> GetKeyValueActivityList()
         {
             return ActivitiesService.GetKeyValueActivityList();
         }

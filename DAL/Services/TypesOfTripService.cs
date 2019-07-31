@@ -13,7 +13,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.TripTypes.Select(a => a).OrderBy(a => a.Name);
+                return db.TripTypes.Select(a => a).OrderBy(a => a.Name).ToList();
             }
         }
 
@@ -30,6 +30,7 @@ namespace DAL.Services
             using (TripsDbContext db = new TripsDbContext())
             {
                 newTypeOfTrip.Id = Guid.NewGuid();
+                newTypeOfTrip.IsActive = true;
                 db.TripTypes.Add(newTypeOfTrip);
                 db.SaveChanges();
 
@@ -44,18 +45,18 @@ namespace DAL.Services
                 var currentTypeOfTrip = db.TripTypes.FirstOrDefault(t => t.Id == activity.Id);
                 currentTypeOfTrip.Description = activity.Description;
                 currentTypeOfTrip.ImagePath = activity.ImagePath;
-                currentTypeOfTrip.IsActive = activity.IsActive;
                 currentTypeOfTrip.Name = activity.Name;
                 currentTypeOfTrip.ParentId = activity.ParentId;
                 currentTypeOfTrip.SeoDescription = activity.SeoDescription;
                 currentTypeOfTrip.SeoKeywords = activity.SeoKeywords;
                 currentTypeOfTrip.Url = activity.Url;
+                db.SaveChanges();
 
                 return currentTypeOfTrip;
             }
         }
 
-        public TypeOfTrip DeleteTypeOfTrip(Guid Id)
+        public IEnumerable<TypeOfTrip> DeleteTypeOfTrip(Guid Id)
         {
             using (TripsDbContext db = new TripsDbContext())
             {
@@ -63,7 +64,7 @@ namespace DAL.Services
                 currentTypeOfTrip.IsActive = false;
                 db.SaveChanges();
 
-                return currentTypeOfTrip;
+                return db.TripTypes.Select(a => a).OrderBy(a => a.Name).ToList();
             }
         }
     }

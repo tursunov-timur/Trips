@@ -13,7 +13,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.Activities.Select(a => a).Where(a => a.IsActive).OrderBy(a => a.Name);
+                return db.Activities.Where(a => a.IsActive).OrderBy(a => a.Name).ToList();
             }
         }
 
@@ -30,6 +30,7 @@ namespace DAL.Services
             using (TripsDbContext db = new TripsDbContext())
             {            
                 newActivity.Id = Guid.NewGuid();
+                newActivity.IsActive = true;
                 db.Activities.Add(newActivity);
                 db.SaveChanges();
 
@@ -44,12 +45,12 @@ namespace DAL.Services
                 var currentActivity = db.Activities.FirstOrDefault(t => t.Id == activity.Id);
                 currentActivity.Description = activity.Description;
                 currentActivity.ImagePath = activity.ImagePath;
-                currentActivity.IsActive = activity.IsActive;
                 currentActivity.Name = activity.Name;
                 currentActivity.ParentId = activity.ParentId;
                 currentActivity.SeoDescription = activity.SeoDescription;
                 currentActivity.SeoKeywords = activity.SeoKeywords;
                 currentActivity.Url = activity.Url;
+                db.SaveChanges();
 
                 return currentActivity;
             }
@@ -63,7 +64,7 @@ namespace DAL.Services
                 currentActivity.IsActive = false;
                 db.SaveChanges();
 
-                return db.Activities.Select(a => a).Where(a => a.IsActive).OrderBy(a => a.Name);
+                return db.Activities.Select(a => a).Where(a => a.IsActive).OrderBy(a => a.Name).ToList(); 
             }
         }
 

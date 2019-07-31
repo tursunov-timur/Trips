@@ -46,7 +46,7 @@ namespace WebApplication5.ApiControllers
 
         [HttpGet]
         [Route("deleteDestination/{id}")]
-        public Destination DeleteDestination(string id)
+        public IEnumerable<Destination> DeleteDestination(string id)
         {
             Guid guid = new Guid();
             Guid.TryParse(id, out guid);

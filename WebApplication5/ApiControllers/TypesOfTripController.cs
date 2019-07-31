@@ -46,7 +46,7 @@ namespace WebApplication5.ApiControllers
 
         [HttpGet]
         [Route("deleteTypeOfTrip/{id}")]
-        public TypeOfTrip DeleteTypeOfTrip(string id)
+        public IEnumerable<TypeOfTrip> DeleteTypeOfTrip(string id)
         {
             Guid guid = new Guid();
             Guid.TryParse(id, out guid);

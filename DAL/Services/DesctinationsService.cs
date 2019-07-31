@@ -13,7 +13,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.Destinations.Select(a => a).OrderBy(a => a.Name);
+                return db.Destinations.Select(a => a).OrderBy(a => a.Name).ToList();
             }
         }
 
@@ -30,6 +30,7 @@ namespace DAL.Services
             using (TripsDbContext db = new TripsDbContext())
             {
                 newDestination.Id = Guid.NewGuid();
+                newDestination.IsActive = true;
                 db.Destinations.Add(newDestination);
                 db.SaveChanges();
 
@@ -43,19 +44,19 @@ namespace DAL.Services
             {
                 var currentDestination = db.Destinations.FirstOrDefault(t => t.Id == activity.Id);
                 currentDestination.Description = activity.Description;
-                currentDestination.ImagePath = activity.ImagePath;
-                currentDestination.IsActive = activity.IsActive;
+                currentDestination.ImagePath = activity.ImagePath;     
                 currentDestination.Name = activity.Name;
                 currentDestination.ParentId = activity.ParentId;
                 currentDestination.SeoDescription = activity.SeoDescription;
                 currentDestination.SeoKeywords = activity.SeoKeywords;
                 currentDestination.Url = activity.Url;
+                db.SaveChanges();
 
                 return currentDestination;
             }
         }
 
-        public Destination DeleteDestination(Guid Id)
+        public IEnumerable<Destination> DeleteDestination(Guid Id)
         {
             using (TripsDbContext db = new TripsDbContext())
             {
@@ -63,7 +64,7 @@ namespace DAL.Services
                 currentDestination.IsActive = false;
                 db.SaveChanges();
 
-                return currentDestination;
+                return db.Destinations.Select(a => a).OrderBy(a => a.Name).ToList();
             }
         }
     }

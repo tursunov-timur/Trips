@@ -63,7 +63,6 @@ namespace DAL.Services
                 currentTrip.TourDates = trip.TourDates;
                 currentTrip.TypeOfTrip = trip.TypeOfTrip;
                 currentTrip.Url = trip.Url;
-                currentTrip.IsActive = trip.IsActive;
 
                 return currentTrip;
             }

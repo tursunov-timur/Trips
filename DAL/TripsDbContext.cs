@@ -33,7 +33,5 @@ namespace DAL
         public DbSet<TripProgram> TripPrograms { get; set; }
 
         public DbSet<TripTestimonial> TripTestimonials { get; set; }
-
-        public DbSet<SEO> SEOs { get; set; }
     }
 }
