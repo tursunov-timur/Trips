@@ -53,5 +53,12 @@ namespace WebApplication5.ApiControllers
 
             return DesctinationsService.DeleteDestination(guid);
         }
+
+        [HttpGet]
+        [Route("getKeyValueDestinationsList")]
+        public IEnumerable<KeyValuePair<Guid, string>> GetKeyValueDestinationsList()
+        {
+            return DesctinationsService.GetKeyValueDestinationsList();
+        }
     }
 }

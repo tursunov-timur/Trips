@@ -53,5 +53,12 @@ namespace WebApplication5.ApiControllers
 
             return TypesOfTripService.DeleteTypeOfTrip(guid);
         }
+
+        [HttpGet]
+        [Route("getKeyValueTypeOfTripsList")]
+        public IEnumerable<KeyValuePair<Guid, string>> GetKeyValueTypeOfTripsList()
+        {
+            return TypesOfTripService.GetKeyValueTypeOfTripsList();
+        }
     }
 }

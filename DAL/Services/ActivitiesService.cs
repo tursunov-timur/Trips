@@ -68,14 +68,14 @@ namespace DAL.Services
             }
         }
 
-        public Dictionary<Guid, string> GetKeyValueActivityList()
+        public IEnumerable<KeyValuePair<Guid, string>> GetKeyValueActivitiesList()
         {
             using (TripsDbContext db = new TripsDbContext())
             {
                 var entitiesList = db.Activities
                     .Where(a => a.IsActive)
                     .Select(a => new { a.Id, a.Name })                    
-                    .OrderBy(a => a.Name).ToDictionary(x => x.Id, x => x.Name);
+                    .OrderBy(a => a.Name).ToDictionary(x => x.Id, x => x.Name).ToList();
 
                 return entitiesList;
             }

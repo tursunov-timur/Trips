@@ -33,14 +33,14 @@ namespace WebApplication5.ApiControllers
 
         [HttpPost]
         [Route("createTrip")]
-        public Trip CreateTrip([FromBody]Trip trip)
+        public Trip CreateTrip([FromBody]TripRequest trip)
         {
             return TripService.CreateTrip(trip);
         }
 
         [HttpPost]
         [Route("updateTrip")]
-        public Trip UpdateTrip([FromBody]Trip trip)
+        public Trip UpdateTrip([FromBody]TripRequest trip)
         { 
             return TripService.UpdateTrip(trip);
         }

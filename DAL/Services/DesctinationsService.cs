@@ -67,5 +67,18 @@ namespace DAL.Services
                 return db.Destinations.Select(a => a).OrderBy(a => a.Name).ToList();
             }
         }
+
+        public IEnumerable<KeyValuePair<Guid, string>> GetKeyValueDestinationsList()
+        {
+            using (TripsDbContext db = new TripsDbContext())
+            {
+                var entitiesList = db.Destinations
+                    .Where(a => a.IsActive)
+                    .Select(a => new { a.Id, a.Name })
+                    .OrderBy(a => a.Name).ToDictionary(x => x.Id, x => x.Name).ToList();
+
+                return entitiesList;
+            }
+        }
     }
 }

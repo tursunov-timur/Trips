@@ -25,10 +25,11 @@ namespace DAL.Services
             }
         }
 
-        public Trip CreateTrip(Trip newTrip)
+        public Trip CreateTrip(TripRequest tripRequest)
         {
             using (TripsDbContext db = new TripsDbContext())
             {
+                var newTrip = ConvertToTripModel(tripRequest);
                 newTrip.Id = Guid.NewGuid();
                 newTrip.IsActive = true;
                 db.Trips.Add(newTrip);
@@ -38,14 +39,13 @@ namespace DAL.Services
             }
         }
 
-        public Trip UpdateTrip(Trip trip)
+        public Trip UpdateTrip(TripRequest tripRequest)
         {
+            var trip = ConvertToTripModel(tripRequest);
             using (TripsDbContext db = new TripsDbContext())
             {
                 var currentTrip = db.Trips.FirstOrDefault(t => t.Id == trip.Id);
-                currentTrip.Activity = trip.Activity;
                 currentTrip.Days = trip.Days;
-                currentTrip.Destination = trip.Destination;
                 currentTrip.EndDate = trip.EndDate;
                 currentTrip.GroupSize = trip.GroupSize;
                 currentTrip.HasSale = trip.HasSale;
@@ -61,10 +61,67 @@ namespace DAL.Services
                 currentTrip.StartDate = trip.StartDate;
                 currentTrip.Text = trip.Text;
                 currentTrip.TourDates = trip.TourDates;
-                currentTrip.TypeOfTrip = trip.TypeOfTrip;
                 currentTrip.Url = trip.Url;
+                currentTrip.Activity = trip.Activity;
 
                 return currentTrip;
+            }
+        }
+
+        public Trip ConvertToTripModel(TripRequest tripRequest)
+        {           
+            using (TripsDbContext db = new TripsDbContext())
+            {
+                Guid destinationId = new Guid();
+                var destination = new Destination();               
+                if (!string.IsNullOrEmpty(tripRequest.DestinationId))
+                {
+                    destinationId = Guid.Parse(tripRequest.DestinationId);
+                    destination = db.Destinations.FirstOrDefault(d => d.Id == destinationId);
+                }
+
+                Guid activityId = new Guid();
+                var activity = new Activity();
+                if (!string.IsNullOrEmpty(tripRequest.ActivityId))
+                {
+                    activityId = Guid.Parse(tripRequest.ActivityId);
+                    activity = db.Activities.FirstOrDefault(d => d.Id == activityId);
+                }
+
+                Guid typeOfTripId = new Guid();
+                var typeOfTrip = new TypeOfTrip();
+                if (!string.IsNullOrEmpty(tripRequest.TypeOfTripId))
+                {
+                    typeOfTripId = Guid.Parse(tripRequest.TypeOfTripId);
+                    typeOfTrip = db.TripTypes.FirstOrDefault(d => d.Id == typeOfTripId);
+                }
+ 
+                var newTrip = new Trip()
+                {
+                    Id = tripRequest.Id,
+                    Activity = activity,
+                    Destination = destination,                   
+                    TypeOfTrip = typeOfTrip,
+                    Days = tripRequest.Days,
+                    EndDate = tripRequest.EndDate,
+                    GroupSize = tripRequest.GroupSize,
+                    HasSale = tripRequest.HasSale,
+                    ImagePath = tripRequest.ImagePath,
+                    Map = tripRequest.Map,
+                    Name = tripRequest.Name,
+                    Nights = tripRequest.Nights,
+                    Price = tripRequest.Price,
+                    PriceText = tripRequest.PriceText,
+                    Sale = tripRequest.Sale,
+                    SeoDescription = tripRequest.SeoDescription,
+                    SeoKeywords = tripRequest.SeoKeywords,
+                    StartDate = tripRequest.StartDate,
+                    Text = tripRequest.Text,
+                    TourDates = tripRequest.TourDates,
+                    Url = tripRequest.Url
+                };
+
+                return newTrip;
             }
         }
 

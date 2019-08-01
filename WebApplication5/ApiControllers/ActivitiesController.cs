@@ -57,10 +57,10 @@ namespace WebApplication5.ApiControllers
         }
 
         [HttpGet]
-        [Route("getKeyValueActivityList")]
-        public IEnumerable<Dictionary<Guid, string>> GetKeyValueActivityList()
+        [Route("getKeyValueActivitiesList")]
+        public IEnumerable<KeyValuePair<Guid, string>> GetKeyValueActivitiesList()
         {
-            return ActivitiesService.GetKeyValueActivityList();
+            return ActivitiesService.GetKeyValueActivitiesList();
         }
     }
 }
