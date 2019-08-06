@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,13 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.Trips.Select(t => t).Where(t => t.IsActive).OrderByDescending(t => t.StartDate).ToList();
+                return db.Trips
+                    .Select(t => t)
+                    .Where(t => t.IsActive)
+                    .Include(t => t.Activity)
+                    .Include(t => t.Destination)
+                    .Include(t => t.TypeOfTrip)
+                    .OrderByDescending(t => t.StartDate).ToList();
             }
         }
 
@@ -21,7 +28,11 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.Trips.FirstOrDefault(t => t.Id == Id);
+                return db.Trips
+                    .Include(t => t.Activity)
+                    .Include(t => t.Destination)
+                    .Include(t => t.TypeOfTrip)
+                    .FirstOrDefault(t => t.Id == Id);
             }
         }
 
@@ -29,101 +40,185 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                var newTrip = ConvertToTripModel(tripRequest);
-                newTrip.Id = Guid.NewGuid();
-                newTrip.IsActive = true;
-                db.Trips.Add(newTrip);
-                db.SaveChanges();
+                try
+                {
+                    Guid? activityId = new Guid();
+                    if (tripRequest.ActivityId != null)
+                    {
+                        activityId = Guid.Parse(tripRequest.ActivityId);
+                    }
+                    else
+                    {
+                        activityId = null;
+                    }
 
-                return newTrip;
+                    Guid? destinationId = new Guid();
+                    if (tripRequest.DestinationId != null)
+                    {
+                        destinationId = Guid.Parse(tripRequest.DestinationId);
+                    }
+                    else
+                    {
+                        destinationId = null;
+                    }
+
+                    Guid? typeOfTripId = new Guid();
+                    if (tripRequest.TypeOfTripId != null)
+                    {
+                        typeOfTripId = Guid.Parse(tripRequest.TypeOfTripId);
+                    }
+                    else
+                    {
+                        typeOfTripId = null;
+                    }
+                    
+
+                    var newTrip = new Trip()
+                    {
+                        Id = Guid.NewGuid(),
+                        IsActive = true,
+                        Days = tripRequest.Days,
+                        EndDate = tripRequest.EndDate,
+                        GroupSize = tripRequest.GroupSize,
+                        HasSale = tripRequest.HasSale,
+                        ImagePath = tripRequest.ImagePath,
+                        Map = tripRequest.Map,
+                        Name = tripRequest.Name,
+                        Nights = tripRequest.Nights,
+                        Price = tripRequest.Price,
+                        PriceText = tripRequest.PriceText,
+                        Sale = tripRequest.Sale,
+                        SeoDescription = tripRequest.SeoDescription,
+                        SeoKeywords = tripRequest.SeoKeywords,
+                        StartDate = tripRequest.StartDate,
+                        Text = tripRequest.Text,
+                        TourDates = tripRequest.TourDates,
+                        Url = tripRequest.Url,
+                        Activity = activityId != null ? db.Activities.FirstOrDefault(d => d.Id == activityId) : null,
+                        Destination = destinationId != null ? db.Destinations.FirstOrDefault(d => d.Id == destinationId) : null,
+                        TypeOfTrip = typeOfTripId != null ? db.TripTypes.FirstOrDefault(d => d.Id == typeOfTripId) : null,
+                    };
+
+                    db.Trips.Add(newTrip);
+                    db.SaveChanges();
+
+                    return newTrip;
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+               
             }
         }
 
-        public Trip UpdateTrip(TripRequest tripRequest)
+        public Trip UpdateTrip(TripRequest trip)
         {
-            var trip = ConvertToTripModel(tripRequest);
+           // var trip = ConvertToTripModel(tripRequest);
             using (TripsDbContext db = new TripsDbContext())
             {
-                var currentTrip = db.Trips.FirstOrDefault(t => t.Id == trip.Id);
-                currentTrip.Days = trip.Days;
-                currentTrip.EndDate = trip.EndDate;
-                currentTrip.GroupSize = trip.GroupSize;
-                currentTrip.HasSale = trip.HasSale;
-                currentTrip.ImagePath = trip.ImagePath;
-                currentTrip.Map = trip.Map;
-                currentTrip.Name = trip.Name;
-                currentTrip.Nights = trip.Nights;
-                currentTrip.Price = trip.Price;
-                currentTrip.PriceText = trip.PriceText;
-                currentTrip.Sale = trip.Sale;
-                currentTrip.SeoDescription = trip.SeoDescription;
-                currentTrip.SeoKeywords = trip.SeoKeywords;
-                currentTrip.StartDate = trip.StartDate;
-                currentTrip.Text = trip.Text;
-                currentTrip.TourDates = trip.TourDates;
-                currentTrip.Url = trip.Url;
-                currentTrip.Activity = trip.Activity;
+                try
+                {
+                    Guid? activityId = new Guid();
+                    if (trip.ActivityId != null)
+                    {
+                        activityId = Guid.Parse(trip.ActivityId);
+                    }
+                    else
+                    {
+                        activityId = null;
+                    }
 
-                return currentTrip;
+                    Guid? destinationId = new Guid();
+                    if (trip.DestinationId != null)
+                    {
+                        destinationId = Guid.Parse(trip.DestinationId);
+                    }
+                    else
+                    {
+                        destinationId = null;
+                    }
+
+                    Guid? typeOfTripId = new Guid();
+                    if (trip.TypeOfTripId != null)
+                    {
+                        typeOfTripId = Guid.Parse(trip.TypeOfTripId);
+                    }
+                    else
+                    {
+                        typeOfTripId = null;
+                    }
+
+                    var currentTrip = db.Trips.FirstOrDefault(t => t.Id == trip.Id);
+                    currentTrip.Days = trip.Days;
+                    currentTrip.EndDate = trip.EndDate;
+                    currentTrip.GroupSize = trip.GroupSize;
+                    currentTrip.HasSale = trip.HasSale;
+                    currentTrip.ImagePath = trip.ImagePath;
+                    currentTrip.Map = trip.Map;
+                    currentTrip.Name = trip.Name;
+                    currentTrip.Nights = trip.Nights;
+                    currentTrip.Price = trip.Price;
+                    currentTrip.PriceText = trip.PriceText;
+                    currentTrip.Sale = trip.Sale;
+                    currentTrip.SeoDescription = trip.SeoDescription;
+                    currentTrip.SeoKeywords = trip.SeoKeywords;
+                    currentTrip.StartDate = trip.StartDate;
+                    currentTrip.Text = trip.Text;
+                    currentTrip.TourDates = trip.TourDates;
+                    currentTrip.Url = trip.Url;
+                    currentTrip.Activity = activityId != null ? db.Activities.FirstOrDefault(d => d.Id == activityId) : null;
+                    currentTrip.Destination = destinationId != null ? db.Destinations.FirstOrDefault(d => d.Id == destinationId) : null;
+                    currentTrip.TypeOfTrip = typeOfTripId != null ? db.TripTypes.FirstOrDefault(d => d.Id == typeOfTripId) : null;
+                    db.SaveChanges();
+
+                    return currentTrip;
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+               
             }
         }
 
-        public Trip ConvertToTripModel(TripRequest tripRequest)
-        {           
-            using (TripsDbContext db = new TripsDbContext())
-            {
-                Guid destinationId = new Guid();
-                var destination = new Destination();               
-                if (!string.IsNullOrEmpty(tripRequest.DestinationId))
-                {
-                    destinationId = Guid.Parse(tripRequest.DestinationId);
-                    destination = db.Destinations.FirstOrDefault(d => d.Id == destinationId);
-                }
+        //public Trip ConvertToTripModel(TripRequest tripRequest)
+        //{           
+        //    //using (TripsDbContext db = new TripsDbContext())
+        //    //{
+        //    //    Guid destinationId = new Guid();
+        //    //    var destination = new Destination();               
+        //    //    if (!string.IsNullOrEmpty(tripRequest.DestinationId))
+        //    //    {
+        //    //        destinationId = Guid.Parse(tripRequest.DestinationId);
+        //    //        destination = db.Destinations.FirstOrDefault(d => d.Id == destinationId);
+        //    //    }
 
-                Guid activityId = new Guid();
-                var activity = new Activity();
-                if (!string.IsNullOrEmpty(tripRequest.ActivityId))
-                {
-                    activityId = Guid.Parse(tripRequest.ActivityId);
-                    activity = db.Activities.FirstOrDefault(d => d.Id == activityId);
-                }
+               
+        //    //    var activity = new Activity();
+        //    //    if (!string.IsNullOrEmpty(tripRequest.ActivityId))
+        //    //    {
+                   
+        //    //        activity = 
+        //    //    }
 
-                Guid typeOfTripId = new Guid();
-                var typeOfTrip = new TypeOfTrip();
-                if (!string.IsNullOrEmpty(tripRequest.TypeOfTripId))
-                {
-                    typeOfTripId = Guid.Parse(tripRequest.TypeOfTripId);
-                    typeOfTrip = db.TripTypes.FirstOrDefault(d => d.Id == typeOfTripId);
-                }
- 
-                var newTrip = new Trip()
-                {
-                    Id = tripRequest.Id,
-                    Activity = activity,
-                    Destination = destination,                   
-                    TypeOfTrip = typeOfTrip,
-                    Days = tripRequest.Days,
-                    EndDate = tripRequest.EndDate,
-                    GroupSize = tripRequest.GroupSize,
-                    HasSale = tripRequest.HasSale,
-                    ImagePath = tripRequest.ImagePath,
-                    Map = tripRequest.Map,
-                    Name = tripRequest.Name,
-                    Nights = tripRequest.Nights,
-                    Price = tripRequest.Price,
-                    PriceText = tripRequest.PriceText,
-                    Sale = tripRequest.Sale,
-                    SeoDescription = tripRequest.SeoDescription,
-                    SeoKeywords = tripRequest.SeoKeywords,
-                    StartDate = tripRequest.StartDate,
-                    Text = tripRequest.Text,
-                    TourDates = tripRequest.TourDates,
-                    Url = tripRequest.Url
-                };
+        //    //    Guid typeOfTripId = new Guid();
+        //    //    var typeOfTrip = new TypeOfTrip();
+        //    //    if (!string.IsNullOrEmpty(tripRequest.TypeOfTripId))
+        //    //    {
+        //    //        typeOfTripId = Guid.Parse(tripRequest.TypeOfTripId);
+        //    //        typeOfTrip = db.TripTypes.FirstOrDefault(d => d.Id == typeOfTripId);
+        //    //    }
 
-                return newTrip;
-            }
-        }
+                
+
+        //    //    //newTrip.Activities.Add(activity);
+        //    //    //newTrip.Destinations.Add(destination);
+        //    //    //newTrip.TypesOfTrip.Add(typeOfTrip);
+
+        //    //    return newTrip;
+        //    //}
+        //}
 
         public IEnumerable<Trip> DeleteTrip(Guid Id)
         {

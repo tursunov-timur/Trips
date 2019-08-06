@@ -13,8 +13,8 @@ namespace DAL
         public TripsDbContext() : base("DefaultConnection")
         {
             Database.SetInitializer(new TripsDbInitializer());
-        }
-
+        }      
+             
 
         public DbSet<Destination> Destinations { get; set; }
 
