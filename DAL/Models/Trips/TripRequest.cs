@@ -12,7 +12,7 @@ namespace DAL.Models
 
         public string Name { get; set; }
 
-        public string Text { get; set; }
+        public string Content { get; set; }
 
         public string Url { get; set; }
 
@@ -20,27 +20,27 @@ namespace DAL.Models
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
-        public Decimal Price { get; set; }
+        public Decimal? Price { get; set; }
 
         public string PriceText { get; set; }
 
-        public Decimal Sale { get; set; }
+        public Decimal? Sale { get; set; }
 
-        public bool HasSale { get; set; }
+        public bool? HasSale { get; set; }
 
-        public int Days { get; set; }
+        public int? Days { get; set; }
 
-        public int Nights { get; set; }
+        public int? Nights { get; set; }
 
-        public int GroupSize { get; set; }
+        public int? GroupSize { get; set; }
 
         public string TourDates { get; set; }
 
         public string Map { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         public string SeoDescription { get; set; }
 

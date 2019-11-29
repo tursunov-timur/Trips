@@ -14,13 +14,16 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.Trips
+                var m = db.Trips.Select(y => y).ToList();
+                var v = db.Trips
                     .Select(t => t)
                     .Where(t => t.IsActive)
                     .Include(t => t.Activity)
                     .Include(t => t.Destination)
                     .Include(t => t.TypeOfTrip)
                     .OrderByDescending(t => t.StartDate).ToList();
+
+                return v;
             }
         }
 
@@ -43,7 +46,7 @@ namespace DAL.Services
                 try
                 {
                     Guid? activityId = new Guid();
-                    if (tripRequest.ActivityId != null)
+                    if (!string.IsNullOrEmpty(tripRequest.ActivityId))
                     {
                         activityId = Guid.Parse(tripRequest.ActivityId);
                     }
@@ -53,7 +56,7 @@ namespace DAL.Services
                     }
 
                     Guid? destinationId = new Guid();
-                    if (tripRequest.DestinationId != null)
+                    if (!string.IsNullOrEmpty(tripRequest.DestinationId))
                     {
                         destinationId = Guid.Parse(tripRequest.DestinationId);
                     }
@@ -63,7 +66,7 @@ namespace DAL.Services
                     }
 
                     Guid? typeOfTripId = new Guid();
-                    if (tripRequest.TypeOfTripId != null)
+                    if (!string.IsNullOrEmpty(tripRequest.TypeOfTripId))
                     {
                         typeOfTripId = Guid.Parse(tripRequest.TypeOfTripId);
                     }
@@ -91,7 +94,7 @@ namespace DAL.Services
                         SeoDescription = tripRequest.SeoDescription,
                         SeoKeywords = tripRequest.SeoKeywords,
                         StartDate = tripRequest.StartDate,
-                        Text = tripRequest.Text,
+                        Content = tripRequest.Content,
                         TourDates = tripRequest.TourDates,
                         Url = tripRequest.Url,
                         Activity = activityId != null ? db.Activities.FirstOrDefault(d => d.Id == activityId) : null,
@@ -164,7 +167,7 @@ namespace DAL.Services
                     currentTrip.SeoDescription = trip.SeoDescription;
                     currentTrip.SeoKeywords = trip.SeoKeywords;
                     currentTrip.StartDate = trip.StartDate;
-                    currentTrip.Text = trip.Text;
+                    currentTrip.Content = trip.Content;
                     currentTrip.TourDates = trip.TourDates;
                     currentTrip.Url = trip.Url;
                     currentTrip.Activity = activityId != null ? db.Activities.FirstOrDefault(d => d.Id == activityId) : null;

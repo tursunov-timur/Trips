@@ -12,7 +12,8 @@
     <link rel="icon" type="image/png" href="favicon.ico">
 
     <link href="~/Areas/Admin/Static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Static/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Static/css/summernote.css" rel="stylesheet">
     <link href="~/Areas/Admin/Static/css/sb-admin.min.css" rel="stylesheet" />
 </head>
 <body id="page-top">
@@ -22,7 +23,7 @@
         @Html.Partial("~/Areas/Admin/Views/Shared/Menu.cshtml")
 
         <div id="content-wrapper">
-            <div class="container-fluid">               
+            <div class="container-fluid">
 
                 @RenderBody()
 
@@ -37,29 +38,26 @@
     </a>
 
 
-    <script src="~/Areas/Admin/dist/polyfills.js"></script>
-    <script src="~/Areas/Admin/dist/runtime.js"></script>
-    <script src="~/Areas/Admin/dist/main.js"></script>
-    <script src="~/Areas/Admin/dist/styles.js"></script>
-    <script src="~/Areas/Admin/dist/vendor.js"></script>
 
     <script src="~/Areas/Admin/Static/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Areas/Admin/Static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/Admin/Static/js/popper.js"></script>
+    <script src="~/Areas/Admin/Static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="~/Areas/Admin/Static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
-    <script src="~/Areas/Admin/Static/vendor/chart.js/Chart.min.js"></script>
-    <script src="~/Areas/Admin/Static/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="~/Areas/Admin/Static/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/Areas/Admin/Static/js/summernote.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="~/Areas/Admin/Static/js/sb-admin.min.js"></script>
 
-    <!-- Demo scripts for this page-->
-    <script src="~/Areas/Admin/Static/js/demo/datatables-demo.js"></script>
-    <script src="~/Areas/Admin/Static/js/demo/chart-area-demo.js"></script>
+
+    <script src="~/Areas/Admin/dist/polyfills.js"></script>
+    <script src="~/Areas/Admin/dist/runtime.js"></script>
+    <script src="~/Areas/Admin/dist/main.js"></script>
+    <script src="~/Areas/Admin/dist/styles.js"></script>
+    <script src="~/Areas/Admin/dist/vendor.js"></script>
 
     @RenderSection("scripts", required: false)
 
