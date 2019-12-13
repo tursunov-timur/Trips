@@ -242,7 +242,8 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.TripPrograms.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.DayNumber);
+                var d = db.TripPrograms.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.DayNumber).ToList();
+                return d;
             }
         }
 
@@ -293,7 +294,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.TripPriceDescs.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort);
+                return db.TripPriceDescs.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort).ToList(); 
             }
         }
 
@@ -345,7 +346,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.TripFAQs.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort);
+                return db.TripFAQs.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort).ToList();
             }
         }
 
@@ -395,7 +396,7 @@ namespace DAL.Services
         {
             using (TripsDbContext db = new TripsDbContext())
             {
-                return db.TripFotos.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort);
+                return db.TripFotos.Select(t => t).Where(p => p.TripId == tripId && p.IsActive).OrderBy(t => t.Sort).ToList();
             }
         }
 

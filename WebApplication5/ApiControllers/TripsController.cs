@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using WebApplication5.Models;
 using DAL;
 using DAL.Models;
 using DAL.Services;
@@ -197,6 +200,39 @@ namespace WebApplication5.ApiControllers
             Guid.TryParse(id, out guid);
 
             return TripService.DeleteTripFoto(guid);
+        }
+
+        [Route("uploadImage")]
+        [HttpPost]
+        public IHttpActionResult UploadImage()
+        {
+            var file = HttpContext.Current.Request.Files.Count > 0 ? HttpContext.Current.Request.Files[0] : null;
+
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName).Replace(" ", "");
+
+                string folderPath = HttpContext.Current.Server.MapPath("~/Content/Uploads/Images/");
+                string relativePath = "/Content/Uploads/Images/" + fileName;
+
+
+                var fullPath = Path.Combine(folderPath, fileName);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                file.SaveAs(fullPath);
+
+                ImageResponseModel ResponseMessage = new ImageResponseModel()
+                {
+                    imageUrl = relativePath
+                };
+
+                return Json(ResponseMessage);
+            }
+            return null;
         }
     }
 }
