@@ -67,6 +67,17 @@ module.exports = "\n    <div class=\"modal-header py-1 px-3\">\n        <h4 clas
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/ui/config/datepicker-config.html":
+/*!****************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/ui/config/datepicker-config.html ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ngb-datepicker></ngb-datepicker>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/ui/destinations/destination-edit/destination-edit.component.html":
 /*!************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/ui/destinations/destination-edit/destination-edit.component.html ***!
@@ -96,7 +107,7 @@ module.exports = "<ol class=\"breadcrumb\">\n    Destinations List\n</ol>\n<div>
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    <div class=\"modal-header py-1 px-3\">\n        <h4 class=\"modal-title h4\" id=\"modal-basic-title\">Trip</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body pt-0 pb-2\">\n        <div *ngIf=\"currentTrip\">\n          <form [formGroup]=\"currentTripForm\" id=\"currentTripForm\"> \n              <div class=\"form-group\">\n                  <input class=\"form-control d-none\" formControlName=\"id\" />\n              </div>   \n              <div class=\"row\">\n                  <div class=\"col-lg-6\">\n                      <label>Trip name:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" formControlName=\"name\" />\n                      </div>\n                  </div>\n                  <div class=\"col-lg-3\">\n                    <label>Trip url:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"url\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-3\">\n                    <label>Cover:</label>\n                    <div class=\"form-group\">\n                      <angular-file-uploader\n                            [config]=\"afuConfig\"\n                            (ApiResponse)=\"imageUploaded($event)\">\n                      </angular-file-uploader>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-12\">\n                    <label>Trip description:</label>\n                    <div class=\"form-group\">\n                        <!-- <div id=\"summernote\"></div>  -->\n                        <angular-editor formControlName=\"content\" [config]=\"editorConfig\"></angular-editor>\n                    </div>\n                  </div>\n                  \n                  <div class=\"col-lg-6\">\n                    <label>Start date:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"startDateStr\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>End date:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"endDateStr\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Price:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"price\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Price text</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"priceText\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Days:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"days\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Nights:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"nights\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Activity</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"activityId\" >\n                          <option *ngFor=\"let activity of activities$\" [value]=\"activity.key\">{{activity.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Destination</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"destinationId\" >\n                          <option *ngFor=\"let destination of destinations$\" [value]=\"destination.key\">{{destination.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Type of Trip</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"typeOfTripId\" >\n                          <option *ngFor=\"let typeOfTrip of typesOfTrip$\" [value]=\"typeOfTrip.key\">{{typeOfTrip.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <!-- <div class=\"col-lg-4\">\n                      <label>Event type:</label>\n                      <div class=\"form-group\">\n                          <select class=\"form-control\" formControlName=\"type\">\n                              <option [value]=\"type.key\" *ngFor=\"let type of eventTypes$\">{{type.value}}</option>\n                          </select>\n                      </div>\n                  </div> -->\n              </div>\n              <!-- <label>Text:</label>\n              <div class=\"form-group\">                 \n                  <app-ngx-editor                   \n                      [spellcheck]=\"true\" \n                      formControlName=\"text\" \n                      [config]=\"editorConfig\"\n                      [imageEndPoint]=\"uploadImageUrl\"></app-ngx-editor>\n              </div>\n              <div class=\"row\">\n                  <div class=\"col-lg-6\">\n                      <label>Created date:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" name=\"createDate\" formControlName=\"createDate\" readonly/>\n                      </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                      <label>Modification date:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" name=\"modificationDate\" formControlName=\"modificationDate\" readonly/>\n                      </div>\n                  </div>\n              </div> -->\n          </form>\n        </div>\n\n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" id=\"program-tab\" data-toggle=\"tab\" href=\"#program\" role=\"tab\" aria-controls=\"program\" aria-selected=\"true\">Trip program</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#price\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\">Trip price</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"messages-tab\" data-toggle=\"tab\" href=\"#faq\" role=\"tab\" aria-controls=\"messages\" aria-selected=\"false\">Trip FAQ</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"settings-tab\" data-toggle=\"tab\" href=\"#photos\" role=\"tab\" aria-controls=\"settings\" aria-selected=\"false\">Photos</a>\n          </li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content pb-2\">\n          <div class=\"tab-pane active\" id=\"program\" role=\"tabpanel\" aria-labelledby=\"program-tab\"> \n            <div class=\"mt-3\">\n              <div *ngFor=\"let day of programDays\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Day {{day.dayNumber}}</span>\n                  <span (click)=\"deleteProgramDay(day)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">\n                  <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"day.title\"/>\n                  <textarea type=\"text\" [(ngModel)]=\"day.description\"></textarea>\n                </div>      \n              </div>    \n            </div>       \n            <button class=\"btn btn-sm btn-primary\" (click)=\"addNewDayToProgram()\">Add day description</button>\n          </div>\n\n          <div class=\"tab-pane\" id=\"price\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\n            <div class=\"mt-3\">\n              <div *ngFor=\"let priceItem of priceItems\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Item #{{priceItem.sort}}</span>\n                  <span (click)=\"deletePriceItem(priceItem)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">\n                    <div class=\"row\">\n                      <div class=\"col-lg-6\">\n                          <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"priceItem.title\"/>\n                      </div>\n                      <div class=\"col-lg-6\">\n                          <span>is Included in price</span>\n                          <input type=\"checkbox\" class=\"mt-2 ml-2\" [(ngModel)]=\"priceItem.isIncluded\"/>\n                      </div>\n                    </div>\n                  <textarea type=\"text\" [(ngModel)]=\"priceItem.description\"></textarea>\n                </div> \n                \n              </div>\n              <button class=\"btn btn-sm btn-info\" (click)=\"addNewPriceItem()\">Add new price item</button>\n            </div>\n          </div>\n\n          <div class=\"tab-pane\" id=\"faq\" role=\"tabpanel\" aria-labelledby=\"settings-tab\">\n              <div class=\"mt-3\">\n                <div *ngFor=\"let tripFAQ of tripFAQs\">\n                  <div class=\"d-flex justify-content-between\">\n                      <span>Item #{{tripFAQ.sort}}</span>\n                      <span (click)=\"deleteFAQItem(tripFAQ)\"><i class=\"fas fa-trash-alt\"></i></span>\n                    </div>\n                    <div class=\"form-group\">\n                      <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"tripFAQ.title\"/>\n                      <textarea type=\"text\" [(ngModel)]=\"tripFAQ.description\"></textarea>\n                    </div>  \n                </div>\n                <button class=\"btn btn-sm btn-secondary\" (click)=\"addNewFAQItem()\">Add new faq item</button>\n              </div>\n            </div>\n\n          <div class=\"tab-pane\" id=\"photos\" role=\"tabpanel\" aria-labelledby=\"messages-tab\">\n            <div class=\"mt-3\">\n              <div *ngFor=\"let tripFoto of tripFotos\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Item #{{tripFoto.sort}}</span>\n                  <span (click)=\"deleteFotoItem(tripFoto)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">                  \n                  <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"tripFoto.title\"/>\n                  <textarea type=\"text\" [(ngModel)]=\"tripFoto.description\"></textarea>\n                </div>     \n              </div>\n              <button class=\"btn btn-sm btn-primary\" (click)=\"addNewFotoItem()\">Add new photo</button>  \n            </div>\n          </div>\n\n          \n        </div>\n\n\n        <div class=\"modal-footer pt-2 pb-0 px-0\">\n          <button class=\"btn btn-outline-dark btn-sm\" type=\"button\" (click)=\"saveChanges()\">Save changes</button>\n        </div>\n    </div>    \n   \n"
+module.exports = "\n    <div class=\"modal-header py-1 px-3\">\n        <h4 class=\"modal-title h4\" id=\"modal-basic-title\">Trip</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body pt-0 pb-2\">\n        <div *ngIf=\"currentTrip\">\n          <form [formGroup]=\"currentTripForm\" id=\"currentTripForm\"> \n              <div class=\"form-group\">\n                  <input class=\"form-control d-none\" formControlName=\"id\" />\n              </div>   \n              <div class=\"row\">\n                  <div class=\"col-lg-6\">\n                      <label>Trip name:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" formControlName=\"name\" />\n                      </div>\n                  </div>\n                  <div class=\"col-lg-3\">\n                    <label>Trip url:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"url\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-3\">\n                    <label>Cover:</label>\n                    <div class=\"form-group\">\n                      <angular-file-uploader\n                            [config]=\"afuConfig\"\n                            (ApiResponse)=\"imageUploaded($event)\">\n                      </angular-file-uploader>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-12\">\n                    <label>Trip description:</label>\n                    <div class=\"form-group\">\n                        <!-- <div id=\"summernote\"></div>  -->\n                        <angular-editor formControlName=\"content\" [config]=\"editorConfig\"></angular-editor>\n                    </div>\n                  </div>\n                  \n                  <div class=\"col-lg-6\">\n                    <label>Start date:</label>\n                    <div class=\"input-group\">\n                      <input class=\"form-control\" placeholder=\"MM/dd/yyyy\" formControlName=\"startDateStr\" name=\"dp\" ngbDatepicker #d=\"ngbDatepicker\"> \n                      <div class=\"input-group-append\">\n                        <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"d.toggle()\" type=\"button\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></button>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>End date:</label>\n                    <div class=\"input-group\">\n                      <input class=\"form-control\" placeholder=\"MM/dd/yyyy\" formControlName=\"endDateStr\" name=\"dp\" ngbDatepicker #d1=\"ngbDatepicker\"> \n                      <div class=\"input-group-append\">\n                        <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></button>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Price:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"price\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Price text</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"priceText\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Days:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"days\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                    <label>Nights:</label>\n                    <div class=\"form-group\">\n                        <input class=\"form-control\" formControlName=\"nights\" />\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Activity</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"activityId\" >\n                          <option *ngFor=\"let activity of activities$\" [value]=\"activity.key\">{{activity.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Destination</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"destinationId\" >\n                          <option *ngFor=\"let destination of destinations$\" [value]=\"destination.key\">{{destination.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <div class=\"col-lg-4\">\n                    <label>Type of Trip</label>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" formControlName=\"typeOfTripId\" >\n                          <option *ngFor=\"let typeOfTrip of typesOfTrip$\" [value]=\"typeOfTrip.key\">{{typeOfTrip.value}}</option>\n                        </select>\n                    </div>\n                  </div>\n                  <!-- <div class=\"col-lg-4\">\n                      <label>Event type:</label>\n                      <div class=\"form-group\">\n                          <select class=\"form-control\" formControlName=\"type\">\n                              <option [value]=\"type.key\" *ngFor=\"let type of eventTypes$\">{{type.value}}</option>\n                          </select>\n                      </div>\n                  </div> -->\n              </div>\n              <!-- <label>Text:</label>\n              <div class=\"form-group\">                 \n                  <app-ngx-editor                   \n                      [spellcheck]=\"true\" \n                      formControlName=\"text\" \n                      [config]=\"editorConfig\"\n                      [imageEndPoint]=\"uploadImageUrl\"></app-ngx-editor>\n              </div>\n              <div class=\"row\">\n                  <div class=\"col-lg-6\">\n                      <label>Created date:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" name=\"createDate\" formControlName=\"createDate\" readonly/>\n                      </div>\n                  </div>\n                  <div class=\"col-lg-6\">\n                      <label>Modification date:</label>\n                      <div class=\"form-group\">\n                          <input class=\"form-control\" name=\"modificationDate\" formControlName=\"modificationDate\" readonly/>\n                      </div>\n                  </div>\n              </div> -->\n          </form>\n        </div>\n\n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" id=\"program-tab\" data-toggle=\"tab\" href=\"#program\" role=\"tab\" aria-controls=\"program\" aria-selected=\"true\">Trip program</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#price\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\">Trip price</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"messages-tab\" data-toggle=\"tab\" href=\"#faq\" role=\"tab\" aria-controls=\"messages\" aria-selected=\"false\">Trip FAQ</a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" id=\"settings-tab\" data-toggle=\"tab\" href=\"#photos\" role=\"tab\" aria-controls=\"settings\" aria-selected=\"false\">Photos</a>\n          </li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content pb-2\">\n          <div class=\"tab-pane active\" id=\"program\" role=\"tabpanel\" aria-labelledby=\"program-tab\"> \n            <div class=\"mt-3\">\n              <div *ngFor=\"let day of programDays\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Day {{day.dayNumber}}</span>\n                  <span (click)=\"deleteProgramDay(day)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">\n                  <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"day.title\"/>\n                  <textarea type=\"text\" [(ngModel)]=\"day.description\"></textarea>\n                </div>      \n              </div>    \n            </div>       \n            <button class=\"btn btn-sm btn-primary\" (click)=\"addNewDayToProgram()\">Add day description</button>\n          </div>\n\n          <div class=\"tab-pane\" id=\"price\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\n            <div class=\"mt-3\">\n              <div *ngFor=\"let priceItem of priceItems\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Item #{{priceItem.sort}}</span>\n                  <span (click)=\"deletePriceItem(priceItem)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">\n                    <div class=\"row\">\n                      <div class=\"col-lg-6\">\n                          <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"priceItem.title\"/>\n                      </div>\n                      <div class=\"col-lg-6\">\n                          <span>is Included in price</span>\n                          <input type=\"checkbox\" class=\"mt-2 ml-2\" [(ngModel)]=\"priceItem.isIncluded\"/>\n                      </div>\n                    </div>\n                  <textarea type=\"text\" [(ngModel)]=\"priceItem.description\"></textarea>\n                </div> \n                \n              </div>\n              <button class=\"btn btn-sm btn-info\" (click)=\"addNewPriceItem()\">Add new price item</button>\n            </div>\n          </div>\n\n          <div class=\"tab-pane\" id=\"faq\" role=\"tabpanel\" aria-labelledby=\"settings-tab\">\n              <div class=\"mt-3\">\n                <div *ngFor=\"let tripFAQ of tripFAQs\">\n                  <div class=\"d-flex justify-content-between\">\n                      <span>Item #{{tripFAQ.sort}}</span>\n                      <span (click)=\"deleteFAQItem(tripFAQ)\"><i class=\"fas fa-trash-alt\"></i></span>\n                    </div>\n                    <div class=\"form-group\">\n                      <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"tripFAQ.title\"/>\n                      <textarea type=\"text\" [(ngModel)]=\"tripFAQ.description\"></textarea>\n                    </div>  \n                </div>\n                <button class=\"btn btn-sm btn-secondary\" (click)=\"addNewFAQItem()\">Add new faq item</button>\n              </div>\n            </div>\n\n          <div class=\"tab-pane\" id=\"photos\" role=\"tabpanel\" aria-labelledby=\"messages-tab\">\n            <div class=\"mt-3\">\n              <div *ngFor=\"let tripFoto of tripFotos\">\n                <div class=\"d-flex justify-content-between\">\n                  <span>Item #{{tripFoto.sort}}</span>\n                  <span (click)=\"deleteFotoItem(tripFoto)\"><i class=\"fas fa-trash-alt\"></i></span>\n                </div>\n                <div class=\"form-group\">                  \n                  <input type=\"text\" class=\"form-control mb-1\" [(ngModel)]=\"tripFoto.title\"/>\n                  <textarea type=\"text\" [(ngModel)]=\"tripFoto.description\"></textarea>\n                </div>     \n              </div>\n              <button class=\"btn btn-sm btn-primary\" (click)=\"addNewFotoItem()\">Add new photo</button>  \n            </div>\n          </div>\n\n          \n        </div>\n\n\n        <div class=\"modal-footer pt-2 pb-0 px-0\">\n          <button class=\"btn btn-outline-dark btn-sm\" type=\"button\" (click)=\"saveChanges()\">Save changes</button>\n        </div>\n    </div>    \n   \n"
 
 /***/ }),
 
@@ -225,17 +236,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _ui_trips_trips_list_trips_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ui/trips/trips-list/trips-list.component */ "./src/app/ui/trips/trips-list/trips-list.component.ts");
-/* harmony import */ var _ui_trips_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ui/trips/trip-edit/trip-edit.component */ "./src/app/ui/trips/trip-edit/trip-edit.component.ts");
-/* harmony import */ var _ui_destinations_destinations_list_destinations_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ui/destinations/destinations-list/destinations-list.component */ "./src/app/ui/destinations/destinations-list/destinations-list.component.ts");
-/* harmony import */ var _ui_destinations_destination_edit_destination_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ui/destinations/destination-edit/destination-edit.component */ "./src/app/ui/destinations/destination-edit/destination-edit.component.ts");
-/* harmony import */ var _ui_activities_activities_list_activities_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ui/activities/activities-list/activities-list.component */ "./src/app/ui/activities/activities-list/activities-list.component.ts");
-/* harmony import */ var _ui_activities_activity_edit_activity_edit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/activities/activity-edit/activity-edit.component */ "./src/app/ui/activities/activity-edit/activity-edit.component.ts");
-/* harmony import */ var _ui_types_of_trip_types_of_trip_list_types_of_trip_list_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui/types-of-trip/types-of-trip-list/types-of-trip-list.component */ "./src/app/ui/types-of-trip/types-of-trip-list/types-of-trip-list.component.ts");
-/* harmony import */ var _ui_types_of_trip_types_of_trip_edit_types_of_trip_edit_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ui/types-of-trip/types-of-trip-edit/types-of-trip-edit.component */ "./src/app/ui/types-of-trip/types-of-trip-edit/types-of-trip-edit.component.ts");
-/* harmony import */ var _ui_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ui/_modals/confirm-modal/confirm-modal.component */ "./src/app/ui/_modals/confirm-modal/confirm-modal.component.ts");
-/* harmony import */ var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @kolkov/angular-editor */ "./node_modules/@kolkov/angular-editor/__ivy_ngcc__/fesm2015/kolkov-angular-editor.js");
-/* harmony import */ var angular_file_uploader__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! angular-file-uploader */ "./node_modules/angular-file-uploader/__ivy_ngcc__/fesm2015/angular-file-uploader.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/__ivy_ngcc__/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ui_config_datepicker_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ui/config/datepicker-config */ "./src/app/ui/config/datepicker-config.ts");
+/* harmony import */ var _core_utils_ngb_date_fr_parser_formatter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./core/_utils/ngb-date-fr-parser-formatter */ "./src/app/core/_utils/ngb-date-fr-parser-formatter.ts");
+/* harmony import */ var _ui_trips_trips_list_trips_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ui/trips/trips-list/trips-list.component */ "./src/app/ui/trips/trips-list/trips-list.component.ts");
+/* harmony import */ var _ui_trips_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ui/trips/trip-edit/trip-edit.component */ "./src/app/ui/trips/trip-edit/trip-edit.component.ts");
+/* harmony import */ var _ui_destinations_destinations_list_destinations_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/destinations/destinations-list/destinations-list.component */ "./src/app/ui/destinations/destinations-list/destinations-list.component.ts");
+/* harmony import */ var _ui_destinations_destination_edit_destination_edit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui/destinations/destination-edit/destination-edit.component */ "./src/app/ui/destinations/destination-edit/destination-edit.component.ts");
+/* harmony import */ var _ui_activities_activities_list_activities_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ui/activities/activities-list/activities-list.component */ "./src/app/ui/activities/activities-list/activities-list.component.ts");
+/* harmony import */ var _ui_activities_activity_edit_activity_edit_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ui/activities/activity-edit/activity-edit.component */ "./src/app/ui/activities/activity-edit/activity-edit.component.ts");
+/* harmony import */ var _ui_types_of_trip_types_of_trip_list_types_of_trip_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./ui/types-of-trip/types-of-trip-list/types-of-trip-list.component */ "./src/app/ui/types-of-trip/types-of-trip-list/types-of-trip-list.component.ts");
+/* harmony import */ var _ui_types_of_trip_types_of_trip_edit_types_of_trip_edit_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ui/types-of-trip/types-of-trip-edit/types-of-trip-edit.component */ "./src/app/ui/types-of-trip/types-of-trip-edit/types-of-trip-edit.component.ts");
+/* harmony import */ var _ui_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./ui/_modals/confirm-modal/confirm-modal.component */ "./src/app/ui/_modals/confirm-modal/confirm-modal.component.ts");
+/* harmony import */ var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @kolkov/angular-editor */ "./node_modules/@kolkov/angular-editor/__ivy_ngcc__/fesm2015/kolkov-angular-editor.js");
+/* harmony import */ var angular_file_uploader__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! angular-file-uploader */ "./node_modules/angular-file-uploader/__ivy_ngcc__/fesm2015/angular-file-uploader.js");
+
+
+
+
 
 
 
@@ -260,15 +278,16 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-            _ui_trips_trips_list_trips_list_component__WEBPACK_IMPORTED_MODULE_7__["TripsListComponent"],
-            _ui_trips_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_8__["TripEditComponent"],
-            _ui_destinations_destinations_list_destinations_list_component__WEBPACK_IMPORTED_MODULE_9__["DestinationsListComponent"],
-            _ui_destinations_destination_edit_destination_edit_component__WEBPACK_IMPORTED_MODULE_10__["DestinationEditComponent"],
-            _ui_activities_activities_list_activities_list_component__WEBPACK_IMPORTED_MODULE_11__["ActivitiesListComponent"],
-            _ui_activities_activity_edit_activity_edit_component__WEBPACK_IMPORTED_MODULE_12__["ActivityEditComponent"],
-            _ui_types_of_trip_types_of_trip_list_types_of_trip_list_component__WEBPACK_IMPORTED_MODULE_13__["TypesOfTripListComponent"],
-            _ui_types_of_trip_types_of_trip_edit_types_of_trip_edit_component__WEBPACK_IMPORTED_MODULE_14__["TypesOfTripEditComponent"],
-            _ui_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_15__["ConfirmModalComponent"]
+            _ui_trips_trips_list_trips_list_component__WEBPACK_IMPORTED_MODULE_10__["TripsListComponent"],
+            _ui_trips_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_11__["TripEditComponent"],
+            _ui_destinations_destinations_list_destinations_list_component__WEBPACK_IMPORTED_MODULE_12__["DestinationsListComponent"],
+            _ui_destinations_destination_edit_destination_edit_component__WEBPACK_IMPORTED_MODULE_13__["DestinationEditComponent"],
+            _ui_activities_activities_list_activities_list_component__WEBPACK_IMPORTED_MODULE_14__["ActivitiesListComponent"],
+            _ui_activities_activity_edit_activity_edit_component__WEBPACK_IMPORTED_MODULE_15__["ActivityEditComponent"],
+            _ui_types_of_trip_types_of_trip_list_types_of_trip_list_component__WEBPACK_IMPORTED_MODULE_16__["TypesOfTripListComponent"],
+            _ui_types_of_trip_types_of_trip_edit_types_of_trip_edit_component__WEBPACK_IMPORTED_MODULE_17__["TypesOfTripEditComponent"],
+            _ui_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_18__["ConfirmModalComponent"],
+            _ui_config_datepicker_config__WEBPACK_IMPORTED_MODULE_8__["NgbdDatepickerConfig"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -276,16 +295,85 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"],
-            _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_16__["AngularEditorModule"],
-            angular_file_uploader__WEBPACK_IMPORTED_MODULE_17__["AngularFileUploaderModule"]
+            _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_19__["AngularEditorModule"],
+            angular_file_uploader__WEBPACK_IMPORTED_MODULE_20__["AngularFileUploaderModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbModule"]
         ],
-        // providers: [
-        //   // {provide: APP_BASE_HREF, useValue : '/Admin/AdminHome/Index/' }
-        //   {provide: APP_BASE_HREF, useValue : '/' }
-        // ],
+        providers: [
+            {
+                provide: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbDateParserFormatter"],
+                useClass: _core_utils_ngb_date_fr_parser_formatter__WEBPACK_IMPORTED_MODULE_9__["NgbDateFRParserFormatter"]
+            }
+            //   // {provide: APP_BASE_HREF, useValue : '/Admin/AdminHome/Index/' }
+            //   {provide: APP_BASE_HREF, useValue : '/' }
+        ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/_utils/ngb-date-fr-parser-formatter.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/core/_utils/ngb-date-fr-parser-formatter.ts ***!
+  \*************************************************************/
+/*! exports provided: NgbDateFRParserFormatter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbDateFRParserFormatter", function() { return NgbDateFRParserFormatter; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/__ivy_ngcc__/fesm2015/ng-bootstrap.js");
+
+
+
+function padNumber(value) {
+    if (isNumber(value)) {
+        return `0${value}`.slice(-2);
+    }
+    else {
+        return '';
+    }
+}
+function isNumber(value) {
+    return !isNaN(toInteger(value));
+}
+function toInteger(value) {
+    return parseInt(`${value}`, 10);
+}
+let NgbDateFRParserFormatter = class NgbDateFRParserFormatter extends _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbDateParserFormatter"] {
+    parse(value) {
+        if (value) {
+            const dateParts = value.trim().split('/');
+            if (dateParts.length === 1 && isNumber(dateParts[0])) {
+                return { year: toInteger(dateParts[0]), month: null, day: null };
+            }
+            else if (dateParts.length === 2 && isNumber(dateParts[0]) && isNumber(dateParts[1])) {
+                return { year: toInteger(dateParts[1]), month: toInteger(dateParts[0]), day: null };
+            }
+            else if (dateParts.length === 3 && isNumber(dateParts[0]) && isNumber(dateParts[1]) && isNumber(dateParts[2])) {
+                return { year: toInteger(dateParts[2]), month: toInteger(dateParts[1]), day: toInteger(dateParts[0]) };
+            }
+        }
+        return null;
+    }
+    format(date) {
+        let stringDate = '';
+        if (date) {
+            stringDate += isNumber(date.month) ? padNumber(date.month) + '/' : '';
+            stringDate += isNumber(date.day) ? padNumber(date.day) + '/' : '';
+            stringDate += date.year;
+        }
+        return stringDate;
+    }
+};
+NgbDateFRParserFormatter = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+], NgbDateFRParserFormatter);
 
 
 
@@ -923,6 +1011,53 @@ ActivityEditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/ui/config/datepicker-config.ts":
+/*!************************************************!*\
+  !*** ./src/app/ui/config/datepicker-config.ts ***!
+  \************************************************/
+/*! exports provided: NgbdDatepickerConfig */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbdDatepickerConfig", function() { return NgbdDatepickerConfig; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/__ivy_ngcc__/fesm2015/ng-bootstrap.js");
+
+
+
+let NgbdDatepickerConfig = 
+// tslint:disable-next-line:component-class-suffix
+class NgbdDatepickerConfig {
+    constructor(config, calendar) {
+        // customize default values of datepickers used by this component tree
+        config.minDate = { year: 1900, month: 1, day: 1 };
+        config.maxDate = { year: 2099, month: 12, day: 31 };
+        // days that don't belong to current month are not visible
+        config.outsideDays = 'hidden';
+        // weekends are disabled
+        config.markDisabled = (date) => calendar.getWeekday(date) >= 6;
+    }
+};
+NgbdDatepickerConfig.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbDatepickerConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbCalendar"] }
+];
+NgbdDatepickerConfig = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        // tslint:disable-next-line:component-selector
+        selector: 'ngbd-datepicker-config',
+        template: __webpack_require__(/*! raw-loader!./datepicker-config.html */ "./node_modules/raw-loader/index.js!./src/app/ui/config/datepicker-config.html"),
+        providers: [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbDatepickerConfig"]] // add NgbDatepickerConfig to the component providers
+    })
+    // tslint:disable-next-line:component-class-suffix
+], NgbdDatepickerConfig);
+
+
+
+/***/ }),
+
 /***/ "./src/app/ui/destinations/destination-edit/destination-edit.component.ts":
 /*!********************************************************************************!*\
   !*** ./src/app/ui/destinations/destination-edit/destination-edit.component.ts ***!
@@ -1246,6 +1381,10 @@ let TripEditComponent = class TripEditComponent {
                 this.currentTrip = res;
                 this.startDateStr = datePipe.transform(this.currentTrip.startDate, 'MM/dd/yyyy');
                 this.endDateStr = datePipe.transform(this.currentTrip.endDate, 'MM/dd/yyyy');
+                this.startDate = { year: new Date(this.currentTrip.startDate).getFullYear(),
+                    month: new Date(this.currentTrip.startDate).getMonth() + 1, day: new Date(this.currentTrip.startDate).getDate() };
+                this.endDate = { year: new Date(this.currentTrip.endDate).getFullYear(),
+                    month: new Date(this.currentTrip.endDate).getMonth() + 1, day: new Date(this.currentTrip.endDate).getDate() };
                 this.loadcurrentTrip();
                 this.loadProgramDays();
                 this.loadPriceItems();
@@ -1296,8 +1435,8 @@ let TripEditComponent = class TripEditComponent {
             content: [this.currentTrip.content],
             url: [this.currentTrip.url],
             imagePath: [this.currentTrip.imagePath],
-            startDateStr: [this.startDateStr],
-            endDateStr: [this.endDateStr],
+            startDateStr: [this.startDate],
+            endDateStr: [this.endDate],
             price: [this.currentTrip.price],
             priceText: [this.currentTrip.priceText],
             sale: [this.currentTrip.sale],
@@ -1460,6 +1599,9 @@ let TripEditComponent = class TripEditComponent {
             }
         }
     }
+    prepareDate(date) {
+        return new Date(date.year, date.month - 1, date.day);
+    }
     saveChanges() {
         const newTrip = new _core_models_trips_trip_model__WEBPACK_IMPORTED_MODULE_9__["Trip"]();
         // tslint:disable-next-line:no-string-literal
@@ -1467,9 +1609,9 @@ let TripEditComponent = class TripEditComponent {
         newTrip.name = this.currentTripForm.controls.name.value;
         newTrip.content = this.currentTripForm.controls.content.value;
         newTrip.url = this.currentTripForm.controls.url.value;
-        newTrip.imagePath = this.currentTripForm.controls.imagePath.value;
-        newTrip.startDate = this.currentTripForm.controls.startDateStr.value;
-        newTrip.endDate = this.currentTripForm.controls.endDateStr.value;
+        newTrip.imagePath = this.pathToCover;
+        newTrip.startDate = this.prepareDate(this.currentTripForm.controls.startDateStr.value);
+        newTrip.endDate = this.prepareDate(this.currentTripForm.controls.endDateStr.value);
         newTrip.price = this.currentTripForm.controls.price.value;
         newTrip.priceText = this.currentTripForm.controls.priceText.value;
         newTrip.sale = this.currentTripForm.controls.sale.value;
@@ -1557,9 +1699,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let TripsListComponent = class TripsListComponent {
-    constructor(tripsService, modalService) {
+    constructor(tripsService, modalService, cdr) {
         this.tripsService = tripsService;
         this.modalService = modalService;
+        this.cdr = cdr;
         this.subscriptions = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"]();
     }
     ngOnInit() {
@@ -1568,30 +1711,33 @@ let TripsListComponent = class TripsListComponent {
         }));
     }
     addNewTrip() {
-        const modalRef = this.modalService.open(_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_5__["TripEditComponent"], { size: 'xl' });
+        const modalRef = this.modalService.open(_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_5__["TripEditComponent"], { size: 'xl', backdrop: 'static', keyboard: false });
         modalRef.componentInstance.updateList.subscribe((receivedEntry) => {
             // this.trips$ = receivedEntry;
             this.tripsService.getTripsList().subscribe(res => {
                 this.trips$ = res;
+                this.cdr.detectChanges();
             });
         });
     }
     editTrip(id) {
-        const modalRef = this.modalService.open(_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_5__["TripEditComponent"], { size: 'xl' });
+        const modalRef = this.modalService.open(_trip_edit_trip_edit_component__WEBPACK_IMPORTED_MODULE_5__["TripEditComponent"], { size: 'xl', backdrop: 'static', keyboard: false });
         modalRef.componentInstance.tripId = id;
         modalRef.componentInstance.updateList.subscribe((receivedEntry) => {
             this.tripsService.getTripsList().subscribe(res => {
                 this.trips$ = res;
+                this.cdr.detectChanges();
             });
         });
     }
     deleteTrip(id) {
-        const modalRef = this.modalService.open(_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_6__["ConfirmModalComponent"], { size: 'lg' });
+        const modalRef = this.modalService.open(_modals_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_6__["ConfirmModalComponent"], { size: 'lg', backdrop: 'static', keyboard: false });
         modalRef.componentInstance.text = 'Are you sure, you want to delete current item?';
         modalRef.componentInstance.confirmText.subscribe((receivedEntry) => {
             if (receivedEntry === 'Yes') {
                 this.tripsService.deleteTrip(id).subscribe(res => {
                     this.trips$ = res;
+                    this.cdr.detectChanges();
                 });
             }
         });
@@ -1599,7 +1745,8 @@ let TripsListComponent = class TripsListComponent {
 };
 TripsListComponent.ctorParameters = () => [
     { type: _core_services_trips_trips_service__WEBPACK_IMPORTED_MODULE_2__["TripsService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] }
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
 ];
 TripsListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
