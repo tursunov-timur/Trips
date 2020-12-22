@@ -1,0 +1,84 @@
+
+    <div class="modal-header py-1 px-3">
+        <h4 class="modal-title h4" id="modal-basic-title">Activity</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body pt-0 pb-2">
+        <div *ngIf="currentActivity">
+          <form [formGroup]="currentActivityForm" id="currentActivityForm"> 
+              <div class="form-group">
+                  <input class="form-control d-none" formControlName="id" />
+              </div>   
+              <div class="row">
+                  <div class="col-lg-6">
+                      <label>Activity name:</label>
+                      <div class="form-group">
+                          <input class="form-control" formControlName="name" />
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <label>Activity url:</label>
+                    <div class="form-group">
+                        <input class="form-control" formControlName="url" />
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <label>Activity description:</label>
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="description" ></textarea>
+                    </div>
+                  </div>                 
+                  <div class="col-lg-6">
+                    <label>Seo description</label>
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="seoDescription" ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <label>Seo keywords</label>
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="seoKeywords" ></textarea>
+                    </div>
+                  </div>
+                  <!-- <div class="col-lg-4">
+                      <label>Event type:</label>
+                      <div class="form-group">
+                          <select class="form-control" formControlName="type">
+                              <option [value]="type.key" *ngFor="let type of eventTypes$">{{type.value}}</option>
+                          </select>
+                      </div>
+                  </div> -->
+              </div>
+              <!-- <label>Text:</label>
+              <div class="form-group">                 
+                  <app-ngx-editor                   
+                      [spellcheck]="true" 
+                      formControlName="text" 
+                      [config]="editorConfig"
+                      [imageEndPoint]="uploadImageUrl"></app-ngx-editor>
+              </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                      <label>Created date:</label>
+                      <div class="form-group">
+                          <input class="form-control" name="createDate" formControlName="createDate" readonly/>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <label>Modification date:</label>
+                      <div class="form-group">
+                          <input class="form-control" name="modificationDate" formControlName="modificationDate" readonly/>
+                      </div>
+                  </div>
+              </div> -->
+          </form>
+        </div>
+
+
+        <div class="modal-footer pt-2 pb-0 px-0">
+          <button class="btn btn-outline-dark btn-sm" type="button" (click)="saveChanges()">Save changes</button>
+        </div>
+    </div>    
+   

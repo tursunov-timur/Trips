@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "О нас";
+    Layout = "~/Views/Voyager/_Layout.cshtml";
+}
+
+
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('/Static/thems/voyager/images/about.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center">
+                <div class="col-md-7 col-sm-12 ftco-animate">                    
+                    <h1 class="mb-3">О нас</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END slider -->
+
+<section class="ftco-section-2">
+    <div class="container-fluid d-flex">
+        <div class="section-2-blocks-wrapper row no-gutters w-100">
+            <div class="img col-sm-12 col-lg-6" style="background-image: url('/Static/img/about-small.jpg');">
+                <a href="https://www.youtube.com/watch?v=2PMkC_7LN4E" class="button popup-vimeo"><span class="ion-ios-play"></span></a>
+            </div>
+            <div class="text col-lg-6 ftco-animate" style="background-image: url('/Static/thems/voyager/images/about-bg.jpg');">
+                <div class="text-inner align-self-start">
+                    <div class="my-5">
+                        <img src="~/Static/img/logo_color.png" />
+                    </div>
+                   
+                    <h3>Походы и сплавы в Подмосковье. Путешествия по России и другим уголкам Земли.</h3>
+
+                    <p style="font-weight:600;">
+                        Друзья, приглашаем Вас поучаствовать в наших программах, турах выходного дня - сплавах и походах. Вы сможете полноценно отдохнуть за выходные,
+                        набраться сил, получить море эмоций, зарядиться энергией на рабочие дни.
+                    </p>
+                    <p style="font-weight:600;">
+                        В наших программах может поучаствовать любой человек, для этого не нужно обладать специальными туристическими навыками. Все снаряжение предоставляется.
+                        Вам надо только приехать в место сбора группы) Дальше- наша забота. Ждем Вас!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pen">
+    <div>
+        <h1 class="text-center">Наша команда</h1>
+    </div>
+    <div class="stage">
+        <div class="element michael flip-vertical-right">
+            <div class="about-us-persons-title">
+                Рафаэль Муртазин
+            </div>
+        </div>
+        <div class="element franklin">
+            <div class="about-us-persons-title about-us-persons-title-2">
+                Никита Герасименко
+            </div>
+        </div>
+        <div class="element trevor">
+            <div class="about-us-persons-title about-us-persons-title-3">
+                Олег Познахорев
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        $('.element').each(function () {
+            $(this).mouseover(function () {
+                $(this).addClass('active');
+                $('.stage').children('.element').not('.active').addClass('inactive');
+            });
+            $(this).mouseleave(function () {
+                $(this).removeClass('active');
+                $('.stage').children('.element').not('.active').removeClass('inactive');
+            });
+        });
+    </script>
+}

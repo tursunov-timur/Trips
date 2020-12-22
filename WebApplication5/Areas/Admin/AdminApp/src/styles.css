@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#currentTripForm label {
+    margin: 0;
+}
+
+#currentTripForm .form-control {
+    height: calc(2rem + 2px); 
+    padding: .15rem .75rem; 
+}
+
+#currentTripForm .form-group {
+    margin-bottom: 0.6rem;
+}
+
+.tab-content .form-control {
+    height: calc(2rem + 2px); 
+    padding: .15rem .75rem; 
+}
+
+.tab-content textarea {    
+    display: block;
+    width: 100%;
+    padding: .15rem .75rem; 
+    height: 57px;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #495057;
+    line-height: 1.5;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    background-clip: padding-box;
+    border-radius: .25rem;
+}
+
+#trips-list td, #trips-list th {
+    padding: .4rem;
+}

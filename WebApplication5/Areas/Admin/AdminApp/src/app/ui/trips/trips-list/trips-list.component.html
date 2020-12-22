@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+   Trips List
+</ol>
+<div>    
+    <table id="trips-list" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>         
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trip of trips$; let i = index;">
+            <th scope="row">{{ i + 1}}</th>
+            <td>{{ trip.name }}</td>           
+            <td class="text-center">
+              <a (click)="editTrip(trip.id)" class="cursor-pointer"><i class="fas fa-pencil-alt"></i></a>&nbsp;
+              <a (click)="deleteTrip(trip.id)" class="cursor-pointer"><i class="fas fa-trash-alt"></i></a>
+            </td>     
+          </tr>          
+        </tbody>
+      </table>
+</div>
+<div>
+    <button class="btn btn-sm btn-primary" (click)="addNewTrip()">Add new trip</button>
+</div>

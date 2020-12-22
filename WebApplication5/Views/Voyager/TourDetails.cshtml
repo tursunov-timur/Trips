@@ -1,0 +1,153 @@
+﻿@using DAL.Models.ViewModels
+@model TripDetailsViewModel
+@{
+    ViewBag.Title = Model.Trip.Name;
+    Layout = "~/Views/Voyager/_Layout.cshtml";    
+}
+
+
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('@Model.Trip.ImagePath');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center">
+                <div class="col-md-9 col-sm-12 ftco-animate">
+                    <h1 class="mb-3">@Model.Trip.Name</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container">
+    <section class="py-5">
+        <h2 class="hike__title hike__title--mobile">Описание</h2>
+        <div>
+            @Html.Raw(@Model.Trip.Content)
+        </div>
+    </section>
+
+    <section>
+        <div id="description" class="hike__plan hike__section">
+            <h2 class="hike__title hike__title--mobile">План похода</h2>
+            @foreach (var day in Model.TripPrograms.OrderBy(p => p.DayNumber))
+            {
+                <div class="hike__day hike__day--1">
+                    <div class="hike__day-column--narrow">
+                        <h4>День @day.DayNumber</h4>
+                    </div>
+                    <div class="hike__day-column">
+                        <p>@day.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="hike__title hike__title--mobile">Что входит/не входит в стоимость</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-12">
+                <h3>Входит в стоимость</h3>
+                @foreach (var item in Model.TripPriceDescriptions.OrderBy(t => t.Sort))
+                {
+                    if (@item.IsIncluded == "true")
+                    {
+                        <p>
+                            @if (!string.IsNullOrEmpty(@item.Title))
+                            {
+                                @item.Title <br />
+                            }
+                            @item.Description
+                        </p>
+                    }
+                }
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <h3>Не входит в стоимость</h3>
+                @foreach (var item in Model.TripPriceDescriptions.OrderBy(t => t.Sort))
+                {
+                    if (@item.IsIncluded != "true")
+                    {
+                        <p>
+                            @if (!string.IsNullOrEmpty(@item.Title))
+                            {
+                                @item.Title <br />
+                            }
+                            @item.Description
+                        </p>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="hike__title hike__title--mobile">Часто задаваемые вопросы</h2>
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var item in Model.TripFAQs.OrderBy(t => t.Sort))
+                {
+                    <p>
+                        @if (!string.IsNullOrEmpty(@item.Title))
+                        {
+                            @item.Title <br />
+                        }
+                        @item.Description
+                    </p>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="hike__title hike__title--mobile">Расписание</h2>
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var item in Model.TripSchedules.OrderBy(t => t.Sort))
+                {
+                    <p>
+                        @if (!string.IsNullOrEmpty(@item.TripDate.ToString("dd/MMMM/yyyy")))
+                        {
+                            @item.TripDate.ToString("dd/MM/yyyy")
+                        }
+                    </p>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="tripCarousel" class="owl-carousel"> 
+                    @foreach (var item in Model.TripFoto.OrderBy(t => t.Sort))
+                    {
+                        <div>
+                            <img class="d-block w-100" src="@item.Path" alt="@item.Title">
+                        </div>
+                    }                               
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+@section scripts  {
+    <script>        
+        $(document).ready(function () {
+            $("#tripCarousel").owlCarousel({
+                loop: true,                
+                stagePadding: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                }
+            });
+        });
+    </script>
+}

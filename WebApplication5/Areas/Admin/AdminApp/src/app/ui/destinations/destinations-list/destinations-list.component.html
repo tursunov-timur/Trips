@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+    Destinations List
+</ol>
+<div>    
+    <table id="activitys-list" class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let destination of destinations$; let i = index;">
+            <th scope="row">{{ i + 1}}</th>
+            <td>{{ destination.name }}</td>
+            <td>{{ destination.text }}</td>    
+            <td class="text-center">
+                <a (click)="editDestination(destination.id)" class="cursor-pointer"><i class="fas fa-pencil-alt"></i></a>&nbsp;
+                <a (click)="deleteDestination(destination.id)" class="cursor-pointer"><i class="fas fa-trash-alt"></i></a>
+            </td>     
+            </tr>          
+        </tbody>
+        </table>
+</div>
+<div>
+    <button class="btn btn-sm btn-primary" (click)="addNewDestination()">Add new destination</button>
+</div>
